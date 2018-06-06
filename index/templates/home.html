@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}Library{% endblock %}</title>
+            <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+	#mic{
+cursor:pointer;	
+}</style>
+	</head>
+	<body onload='window.scrollBy(0, off.top)'>
+	<header>
+		<h1>Welcome</h1>
+	</header>
+		<div id="dialog-body" class="panel panel-default">
+		<div class="panel-heading"><h3>Query Box</h3></div><br>
+			<div id="dialog-list-div" class="panel-body">
+				<ul id="dialog-list" class="list-group">
+					<li class="text-left list-group-item"><small style="color:grey">~Computer</small><br><span style="font-size:25px">मैं आपकी मदद कैसे कर सकता हूं?</span><br><small style="color:grey"></small></li>
+				</ul>
+			</div>
+	</div>
+	<form id="dialog-form" method="post" action="/dialog/"> 
+		{% csrf_token %}
+		<div id="dialog-bottom" style="bottom:0 ; position: fixed;" class="input-group">
+			<input type="text" id="dialog-msg" name="dialog-msg" class="form-control"/>
+			<span class="input-group-btn">
+				<input class="btn btn-default" id="send" type="submit" value="Send"/>
+			</span>
+			<img onclick="startDictation()" id="mic" style="border:1px  solid;display:inline-block;right:0px" height="35px" width="35px"  src="{% static 'mic-active.png' %}">
+		</div>
+	</form>
+	<div id="down"></div>
+	<script>
+  function startDictation() {
+	$('#send').attr('disabled', 'disabled');
+document.getElementById('dialog-msg').value='';
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+	document.getElementById('mic').src="{% static 'mic-inactive.jpg' %}";
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "hi-IN";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('dialog-msg').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+	document.getElementById('mic').src="{% static 'mic-active.png' %}";
+	$('#send').removeAttr('disabled');
+      
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+	document.getElementById('mic').src="{% static 'mic-active.png' %}";
+      }
+
+    }
+  }
+</script>
+	</body>
+	<script src="{% static 'dialog.js' %}"></script>
+<script>
+	var off=$('#down').offset();
+</script>
+</html>
