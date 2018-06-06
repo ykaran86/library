@@ -15,8 +15,9 @@ def dialog(request):
         formatedDate = myDate.strftime("%b %d, %Y, %I:%M %p")
         conn = sqlite3.connect('library.db')
         c = conn.cursor()
-        c.execute("SELECT count(*) from book")
+        c.execute("SELECT COUNT(*) FROM book")
         x=c.fetchone()[0]
+        conn.commit()
         conn.close()
         return JsonResponse({ 'dialog':dialogue, 'time':formatedDate, 'reply':x })
     else:
