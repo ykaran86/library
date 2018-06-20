@@ -8,12 +8,21 @@ import math
 
 globalvar=None
 globalvarcol=None
+clientName=None
+clientNameSearch=False
+globaltofind=[]
+globalfromfind=[]
 
 def generateQuery(query):
+    global clientName
+    global clientNameSearch
+    global globaltofind
+    global globalfromfind
+    print(clientNameSearch,clientName,globaltofind,globalfromfind)
     translator = Translator()
     where=('जो','जिनका','जिनके','जिनकी','जिनको','जिसका','जिसके','जिसकी','जिसने','जिसको','जिन्हें','जिन्होंने','किसका','किसने','जिस','किस','किसके','जिसमें','जिसमे')
     count=('कितना','कितनी','कितने','कितनों','कोई')
-    client=('मेरा','मेरी','हमारा','हमारी','हमने','हम','हमको','हमें')
+    client=('मेरा','मेरी','मैंने','हमारा','हमारी','हमने','हम','हमको','हमें')
     maxm=('सबसे ज्यादा',)
     minm=('सबसे कम',)
     subject=('इनका','उनका','इसका','उसे','उसका','उसको','इनके','उनके','इसके','उसके','उसमें','उसमे','इनकी','उनकी','इसकी','उसकी','यह','वह','इस','उस','ये','वो')
@@ -54,7 +63,7 @@ def generateQuery(query):
     address=('पता','एड्रेस','एड्रेस','ADDRESS')
     phoneNo=('फ़ोन नंबर','फोन नंबर','कांटेक्ट नंबर','PHONE NO','CONTACT NO','PHONE NO.','CONTACT NO.','PHONE NUMBER','CONTACT NUMBER')
     eMail=('ईमेल ID','ईमेल','ईमेल एड्रेस','EMAIL','EMAIL ID','EMAIL ADDRESS')
-    dues=('ड्यूस','ड्यूश','DUES')
+    dues=('ड्यूस','ड्यूश','ड्यू ','DUES','DUE','DEW','DEWS','DUECE')
     book={'code':code,'classNo':classNo,'title':title,'author':author,'publication':publication,'collation':collation,'series':series,'noofCopy':noofCopy,'keywords':keywords}
     bookcopy={'accessionNo':accessionNo,'edition':edition,'price':price,'reservedYes':reservedYes,'reservedNo':reservedNo,'c.status':status,'shelfNo':shelfNo,'lastIssue':lastIssue,'IssueDate':IssueDate}
     member={'memberCode':memberCode,'memberName':memberName,'fatherName':fatherName,'socialCategory':socialCategory,'designation':designation,'groupCode':groupCode,'joiningDate':joiningDate,'addressLocal,addressHome':address,'phoneNo':phoneNo,'eMail':eMail,'dues':dues}   
@@ -91,9 +100,12 @@ def generateQuery(query):
     statusval=[]
     tofindcol=[]
     fromfindcol=[]
+    it=[]
     fromfindvar2=''
     fromfindval2=''
     num=None
+    fromfindappend=False
+    memberappend=False
     i=0
     while(i<len(keywordings)):
         if(keywordings[i] not in nonNounWords):
@@ -109,6 +121,16 @@ def generateQuery(query):
                 if(keywordings[i] in  count):
                     if(keywordings[i+1]=='का' or keywordings[i+1] == 'की'):
                         keywordings[i+1]='PRICE'
+                elif(keywordings[i] in client):
+                    if(clientName==None and clientNameSearch==False):
+                        clientNameSearch=True
+                    elif(clientName!=None):
+                        keywordings[i]=clientName
+                        keywordings.insert(i+1,'की')
+                        queryfun.pop(-1)
+                        memberTable=True
+                        memberappend=True
+                        i+=1
                 i+=1
             elif(keywordings[i]=='से' or keywordings[i]== 'सी' or keywordings[i]=='सा'):
                 keywordings.pop(i)
@@ -336,6 +358,36 @@ def generateQuery(query):
         trans[trans.index('All time low')]='min'
         keywordings[keywordings.index('All time low')]='min'
     print("trans",trans)
+    if(clientNameSearch==True):
+        if(len(col)==0 and len(col1)==0 and len(col2)==0):
+            if(len(trans)==1):
+                tofindcol=globaltofind
+                it=globalfromfind
+                clientName=trans[0]
+                trans=[]
+                keywordings=[]
+                queryfun=[]
+                it.append('memberName')
+                it.append(clientName)
+                globaltofind=[]
+                globalfromfind=[]
+                clientNameSearch=False
+                fromfindappend=True
+                for i in (tofindcol):
+                    if(i in book):
+                        bookTable=True
+                    elif(i in bookcopy):
+                        bookcopyTable=True
+                    else:
+                        memberTable=True
+                for i in range(len(it)):
+                    if(i%2==0):
+                        if(i in book):
+                            bookTable=True
+                        elif(i in bookcopy):
+                            bookcopyTable=True
+                        else:
+                            memberTable=True
     print("col",col)
     print("col1",col1)
     print("col2",col2)
@@ -514,7 +566,7 @@ def generateQuery(query):
                 bookTable=True
     global globalvar
     global globalvarcol
-    if(len(fromfindcol)==0):
+    if(len(fromfindcol)==0 and memberappend==False and clientNameSearch==False and fromfindappend==False):
         if('count' not in queryfun):
             if(globalvarcol=='title'): 
                 fromfindcol.append('title')
@@ -550,11 +602,15 @@ def generateQuery(query):
         trans.append(fromfindval2)
     print("tofindcol",tofindcol)
     print("fromfindcol",fromfindcol)
-    it=[]
     for i in range(len(fromfindcol)):
         it.append(fromfindcol[i])
         it.append(trans[i])
     print("it",it)
+    if(clientName==None and clientNameSearch==True):
+        globaltofind=tofindcol
+        globalfromfind=it
+        z="आपका नाम क्या है"
+        return z
     if(num!=None):
         k=keywordings.index('limnum')
         if(keywordings[k+1]!='title'):
@@ -562,6 +618,15 @@ def generateQuery(query):
     conn = sqlite3.connect('library.db')
     c = conn.cursor()
     print(bookTable,bookcopyTable,memberTable)
+    if(clientName!=None ):
+        if(fromfindappend==True):
+            for i in range(len(it)):
+                if(i%2==0):
+                    fromfindcol.append(it[i])
+        elif(memberappend==True):
+            fromfindcol.append('memberName')
+            it.append('memberName')
+            it.append(clientName)
     if((bookTable==True or bookcopyTable==True) and memberTable==True):
         if('count' not in queryfun):
             executequery="select "+"{}, "*(len(tofindcol)-1)+"{} from book b INNER JOIN bookcopy c ON b.code=c.code INNER JOIN member m ON c.lastIssue=m.memberCode "
@@ -681,11 +746,11 @@ def generateQuery(query):
                             globalvarcol='memberName'
                             break;
             if(len(fromfindcol)!=0):
-                if('title' in fromfindcol):
+                if('title' in fromfindcol and len(trans)!=0):
                     k=fromfindcol.index('title')
                     globalvar=trans[k]
                     globalvarcol='title'
-                if('memberName' in fromfindcol):
+                if('memberName' in fromfindcol and len(trans)!=0):
                     k=fromfindcol.index('memberName')
                     globalvar=trans[k]
                     globalvarcol='memberName'
