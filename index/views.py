@@ -14,23 +14,25 @@ globaltofind=[]
 globalfromfind=[]
 
 def generateQuery(query):
+    if(query=='धन्यवाद' or query=='शुक्रिया' or query=='थैंक यू सो मच' or query=='थैंक यू' or query=='थैंक्स'):
+        return('इस सुविधा का उपयोग करने के लिए धन्यवाद')
     global clientName
     global clientNameSearch
     global globaltofind
     global globalfromfind
     print(clientNameSearch,clientName,globaltofind,globalfromfind)
     translator = Translator()
-    where=('जो','जिनका','जिनके','जिनकी','जिनको','जिसका','जिसके','जिसकी','जिसने','जिसको','जिन्हें','जिन्होंने','किसका','किसने','जिस','किस','किसके','जिसमें','जिसमे')
+    where=('जो','जिनका','जिनके','जिनकी','जिनको','जिसका','जिसके','जिसकी','जिसने','जिसको','जिन्हें','जिन्होंने','किसका','किसकी','किसने','जिस','किस','किसके','जिसमें','जिसमे')
     count=('कितना','कितनी','कितने','कितनों','कोई')
     client=('मेरा','मेरी','मैंने','हमारा','हमारी','हमने','हम','हमको','हमें')
     maxm=('सबसे ज्यादा',)
     minm=('सबसे कम',)
-    subject=('इनका','उनका','इसका','उसे','उसका','उसको','इनके','उनके','इसके','उसके','उसमें','उसमे','इनकी','उनकी','इसकी','उसकी','यह','वह','इस','उस','ये','वो')
+    subject=('इनका','उनका','इसका','उसे','उसका','उसको','इनके','उनके','उसने','इसके','इन्होंने','उन्होंने','उसके','उसमें','उसमे','इनकी','उनकी','इसकी','उसकी','यह','वह','इस','उस','ये','वो')
     kalist=('इनका','उनका','इसका','उसका','इनके','उनके','उसको','इसके','उसके','इनकी','उनकी','इसकी','उसकी','का','की','के')
     tofindvarlist=('जो','जिसने','जिस','जिन्होंने')
-    tofindlist=('कौन','कौनसी','किसने','क्या','बताइए','बता')
+    tofindlist=('कौन','कौनसी','किसने','क्या','बताइए','बता','मिल')
     who=('कौन','कौनसी','कौन-कौन')
-    words=('कब','कहाँ','कहां','का','की','किया','था','थे','कि','के','को','है','हैं','था','टोटल','कुल','मिलाकर','या','सब','से','लिए','वाली','वाले','में','थी','लाइब्रेरी','धन्यवाद','और','सारी','क्या','सकता','नाम','मिलेगा','आप','बता','सकते','सकती','जानकारी','मिलेगी','हो','बताइए','बताइये','दीजिए','किसी','ने','कराई','सी','घर')
+    words=('कब','कहाँ','कहां','का','की','किया','था','थे','कि','के','को','है','हैं','था','टोटल','कुल','मिलाकर','या','सब','से','लिए','गई','वाली','वाले','में','थी','लाइब्रेरी','धन्यवाद','और','सारी','क्या','सकता','नाम','मिलेगा','आप','बता','सकते','सकती','जानकारी','मिलेगी','मिल','हो','बताइए','बताइये','दीजिए','किसी','ने','कराई','सी','घर')
     nonNoun={'where':where,'count':count,'client':client,'max':maxm,'min':minm,'subject':subject,'who':who,'words':words}
     queryfunNoun={'where':where,'count':count,'client':client,'max':maxm,'min':minm}
     code=('कोड','कोड नंबर','CODE','CODE NUMBER','CODE NO','CODE NO.')
@@ -40,7 +42,7 @@ def generateQuery(query):
     publication=('पब्लिकेशन','publication')
     collation=('पेजेज','पन्ने','पेज','collation','PAGE','PAGES')
     series=('सीरीज','SERIES')
-    tofind=('कौन','कोई','कहां','कहाँ','कब','कौनसी','कौन-कौन','कितना','कितनी','कितने','किसने','क्या','किस','बताइए','बताइये','बता')
+    tofind=('कौन','कोई','कहां','कहाँ','कब','कौनसी','कौन-कौन','कितना','कितनी','कितने','किसने','क्या','किस','बताइए','बताइये','बता','मिल')
     noofCopy=('कॉपी','कॉपियां','नंबर ऑफ कॉपी', 'COPY', 'COPIES', 'NUMBER OF COPIES', 'NUMBER OF COPY')
     keywords=('रिलेटेड','RELATED','तरह')
     accessionNo=('एक्शन नंबर','अक्सेशन नंबर','ACCESSION NO.','ACCESSION NO','ACCESSION NUMBER')
@@ -50,7 +52,7 @@ def generateQuery(query):
     reservedYes=('रिजर्व','रिज़र्व','रिजर्व्ड','रिजल्ट','RESERVE','RESERVED')
     status=('स्टेटस','अवेलेबल','मिसिंग','रिकवर','राइट ऑफ','STATUS','AVAILABLE','MISSING','RECOVER','RECOVERED','WRITE OFF')
     statusDict={'status':['स्टेटस','STATUS'],'Available':['अवेलेबल','AVAILABLE'],'Issued':[],'Missing':['मिसिंग','MISSING'],'Recovered':['रिकवर','RECOVER','RECOVERED'],'Writeoff':['राइट ऑफ','WRITE OFF']}
-    shelfNo=('सेल्फ','जगह','पर','पे','मिल','SHELF','SHELF NUMBER','SHELF NO','SHELF NO.')
+    shelfNo=('सेल्फ','जगह','पर','पे','SHELF','SHELF NUMBER','SHELF NO','SHELF NO.')
     lastIssue=('इशू','यीशु','ISSUED','ISSUE','लास्ट','LAST','लास्ट इशू','लास्ट यीशु','LAST ISSUE')
     IssueDate=('ड्यू डेट','इशू डेट','यीशु डेट','ISSUE DATE','लास्ट इशू डेट','लास्ट यीशु डेट','LAST ISSUE DATE')
     memberCode=('मेंबर कोड','मेंबर ID','MEMBER CODE','MEMBER ID')
@@ -62,8 +64,8 @@ def generateQuery(query):
     joiningDate=('जोइनिंग डेट','जॉइन','ज्वाइन','JOIN','JOINING DATE')
     address=('पता','एड्रेस','एड्रेस','ADDRESS')
     phoneNo=('फ़ोन नंबर','फोन नंबर','कांटेक्ट नंबर','PHONE NO','CONTACT NO','PHONE NO.','CONTACT NO.','PHONE NUMBER','CONTACT NUMBER')
-    eMail=('ईमेल ID','ईमेल','ईमेल एड्रेस','EMAIL','EMAIL ID','EMAIL ADDRESS')
-    dues=('ड्यूस','ड्यूश','ड्यू ','DUES','DUE','DEW','DEWS','DUECE')
+    eMail=('मेल ID','ईमेल ID','ईमेल','ईमेल एड्रेस','EMAIL','EMAIL ID','EMAIL ADDRESS')
+    dues=('ड्यूस','डीयू','ड्यूश','ड्यू ','DUES','DUE','DEW','DEWS','DUECE')
     book={'code':code,'classNo':classNo,'title':title,'author':author,'publication':publication,'collation':collation,'series':series,'noofCopy':noofCopy,'keywords':keywords}
     bookcopy={'accessionNo':accessionNo,'edition':edition,'price':price,'reservedYes':reservedYes,'reservedNo':reservedNo,'c.status':status,'shelfNo':shelfNo,'lastIssue':lastIssue,'IssueDate':IssueDate}
     member={'memberCode':memberCode,'memberName':memberName,'fatherName':fatherName,'socialCategory':socialCategory,'designation':designation,'groupCode':groupCode,'joiningDate':joiningDate,'addressLocal,addressHome':address,'phoneNo':phoneNo,'eMail':eMail,'dues':dues}   
@@ -134,6 +136,10 @@ def generateQuery(query):
                 i+=1
             elif(keywordings[i]=='से' or keywordings[i]== 'सी' or keywordings[i]=='सा'):
                 keywordings.pop(i)
+            elif(keywordings[i]=='मिल' and (keywordings[i-1]=='कहां' or keywordings[i-1]=='कहाँ')):
+                keywordings[i]='सेल्फ'
+                nouns.append('सेल्फ')
+                i+=1
             else:
                 i+=1
     
@@ -453,7 +459,7 @@ def generateQuery(query):
             elif(keywordings[k+1] in tofind or keywordings[k-1] in tofind):
                 tofindcol.append(i)
                 if(i=='noofCopy'):
-                    if(keywordings[k+1]=='reservedYes' or keywordings[k+1]=='reservedNo' or keywordings[k+1]=='status'):
+                    if(keywordings[k+1]=='reservedYes' or keywordings[k+1]=='reservedNo' or keywordings[k+1]=='c.status'):
                         tofindcol.pop(-1)
                         keywordings.pop(k)
                         visited_change=False
@@ -531,6 +537,8 @@ def generateQuery(query):
                     if(keywordings[k-1] == 'title'):
                         fromfindvar2='c.status'
                         fromfindval2='Issued'
+                if((i=='eMail' or i=='phoneNo') and keywordings[k+1]=='और'):
+                    tofindcol.append(i)
         if(visited_change==True):
             visited.append(k)
     print('this time',tofindcol)    
@@ -538,11 +546,12 @@ def generateQuery(query):
     for i in keywordings:
         if(i in tofindlist):
             k=keywordings.index(i)
-            if(keywordings[k-1] not in tofindcol and keywordings[k+1] not in tofindcol):
-                if(tofindvar!=''):
-                    tofindcol.append(tofindvar)
-                    print('this time',tofindcol)
-                    bookTable=True
+            if((k!=0) and (k!=len(keywordings)-1)):
+                if(keywordings[k-1] not in tofindcol and keywordings[k+1] not in tofindcol):
+                    if(tofindvar!=''):
+                        tofindcol.append(tofindvar)
+                        print('this time',tofindcol)
+                        bookTable=True
     print(trans)
     for i in trans:
         k=keywordings.index(i)
@@ -576,6 +585,11 @@ def generateQuery(query):
                 fromfindcol.append('memberName')
                 trans.append(globalvar)
                 memberTable=True
+            elif(globalvarcol=='author'):
+                fromfindcol.append('author')
+                trans.append(globalvar)
+                bookTable=True
+                
         else:
             for i in keywordings:
                 if(i in subject):
@@ -589,15 +603,23 @@ def generateQuery(query):
                         trans.append(globalvar)
                         memberTable=True
                         break;
+                    elif(globalvarcol=='author'):
+                        fromfindcol.append('author')
+                        trans.append(globalvar)
+                        bookTable=True
+                        break;
     if(fromvar=='reserved'):
+        bookcopyTable=True
         fromfindcol.append('reserved')
         trans.append(fromvarvalue)
     if(fromstatusvar=='c.status'):
+        bookcopyTable=True
         while(len(statusval)!=0):
             fromfindcol.append('c.status')
             trans.append(statusval[0])
             statusval.pop(0)
     if(fromfindvar2=='c.status'):
+        bookcopyTable=True
         fromfindcol.append('c.status')
         trans.append(fromfindval2)
     print("tofindcol",tofindcol)
@@ -606,6 +628,7 @@ def generateQuery(query):
         it.append(fromfindcol[i])
         it.append(trans[i])
     print("it",it)
+    
     if(clientName==None and clientNameSearch==True):
         globaltofind=tofindcol
         globalfromfind=it
@@ -625,8 +648,12 @@ def generateQuery(query):
                     fromfindcol.append(it[i])
         elif(memberappend==True):
             fromfindcol.append('memberName')
+            trans.append(clientName)
             it.append('memberName')
             it.append(clientName)
+    if(('किसका' in keywordings or 'किसकी' in keywordings or 'किसके' in keywordings) and (len(set(member).intersection(keywordings))!=0) ):
+        tofindcol.append('memberName')
+        memberTable=True
     if((bookTable==True or bookcopyTable==True) and memberTable==True):
         if('count' not in queryfun):
             executequery="select "+"{}, "*(len(tofindcol)-1)+"{} from book b INNER JOIN bookcopy c ON b.code=c.code INNER JOIN member m ON c.lastIssue=m.memberCode "
@@ -661,12 +688,21 @@ def generateQuery(query):
     
     elif(memberTable==True):
         if(len(fromfindcol)!=0):
-            executequery="select " + "{},"*(len(tofindcol)-1) + "{} from member where " + "UPPER(TRIM({})) LIKE UPPER('%{}%'),"*(len(fromfindcol)-2) + "UPPER(TRIM({})) LIKE UPPER('%{}%') and "*(math.ceil((len(fromfindcol)-1)/len(fromfindcol))) + "UPPER(TRIM({})) LIKE UPPER('%{}%')"
+            if('max' in trans):
+                k=it.index('max')
+                it[k]=fromfindcol[0]
+                executequery="select distinct {} from member where {} = (select max({}) from member)"
+            elif('min' in trans):
+                k=it.index('min')
+                it[k]=fromfindcol[0]
+                executequery="select distinct {} from member where {} = (select min({}) from member)"
+            else:
+                executequery="select " + "{},"*(len(tofindcol)-1) + "{} from member where " + "UPPER(TRIM({})) LIKE UPPER('%{}%'),"*(len(fromfindcol)-2) + "UPPER(TRIM({})) LIKE UPPER('%{}%') and "*(math.ceil((len(fromfindcol)-1)/len(fromfindcol))) + "UPPER(TRIM({})) LIKE UPPER('%{}%')"           
         else:
             if('count' in queryfun):
                 executequery="select " + "count(distinct {}) from member"
             else:
-                executequery="select " + "{},"*(len(tofindcol)-1) + "{} from member"
+                executequery="select " + "distinct {},"*(len(tofindcol)-1) + "distinct {} from member"
         print(executequery.format(*tofindcol,*it))
         c.execute(executequery.format(*tofindcol,*it))
         ans=c.fetchall()
@@ -717,7 +753,7 @@ def generateQuery(query):
         z="अपनी क्वेरी की जांच करे"
     else:
         print(len(ans))
-        if(len(ans)==0 or (len(ans)==1 and ans[0][0]=='')):
+        if(len(ans)==0):
             z="यह जानकारी उपलब्ध नहीं हैं"
         else:
             z=""
@@ -730,7 +766,29 @@ def generateQuery(query):
                     z+=str(j)+" ;"
                 z+="<br>"
                 countin+=1
-            if(len(tofindcol)!=0):
+            print(fromfindcol)
+            print(trans)
+            if(len(fromfindcol)!=0):
+                if('author' in fromfindcol and len(trans)!=0):
+                    k=fromfindcol.index('author')
+                    globalvar=trans[k]
+                    globalvarcol='author'
+                if('title' in fromfindcol and len(trans)!=0):
+                    k=fromfindcol.index('title')
+                    globalvar=trans[k]
+                    globalvarcol='title'
+                if('memberName' in fromfindcol and len(trans)!=0):
+                    k=fromfindcol.index('memberName')
+                    globalvar=trans[k]
+                    globalvarcol='memberName'
+            if(len(tofindcol)!=0 and len(ans)==1):
+                if('author' in tofindcol):
+                    k=tofindcol.index('author')
+                    for i in range(len(ans)):
+                        if(ans[i][k]!=''):
+                            globalvar=ans[i][k]
+                            globalvarcol='author'
+                            break;
                 if('title' in tofindcol):
                     k=tofindcol.index('title')
                     for i in range(len(ans)):
@@ -745,16 +803,7 @@ def generateQuery(query):
                             globalvar=ans[i][k]
                             globalvarcol='memberName'
                             break;
-            if(len(fromfindcol)!=0):
-                if('title' in fromfindcol and len(trans)!=0):
-                    k=fromfindcol.index('title')
-                    globalvar=trans[k]
-                    globalvarcol='title'
-                if('memberName' in fromfindcol and len(trans)!=0):
-                    k=fromfindcol.index('memberName')
-                    globalvar=trans[k]
-                    globalvarcol='memberName'
-
+                
     return z
 
 def home(request):
