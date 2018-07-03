@@ -9,6 +9,8 @@ Author
 
 Yogesh Karan
 
+Supervisors:- Shrikant Malviya(Research Scholar, IIIT Allahabad) and Rohit Mishra(Research Scholar, IIIT Allahabad)
+
 **created and tested on Ubuntu 16.04 LTS with Python 3.6**
 
 An Attempt to make a very simple, Library Asssistant that understands speech as well as text input and is capable of providing answers to various types of queries related to a library system. The library database used is IIIT Allahabad library database. This project is based on rule based approach. This is project is in very primitive stage, so various modifications are required. But right now it can work on several types of queries:
@@ -248,8 +250,8 @@ if no error shows up and a link(http://127.0.0.1:8000/) is
 provided then open that link in chrome.  
 If It worked! is displayed then you are on right track.  
 
-10. creating an application:-
-	` (myvenv)~/library$ python manage.py startapp index `
+10. creating an application:-  
+	` (myvenv)~/library$ python manage.py startapp index `  
 add ‘index’ in **INSTALLED_APPS** list in **mysite/settings.py**  
 **INSTALLED_APPS** list will look like:-
 ```
