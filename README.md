@@ -228,21 +228,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 run the command:  
 	` (myvenv) ~/library$ python manage.py migrate `  
 if this gives any error like  
-1) No module named *apt_pkg*  
-then run:-  
+    1) No module named *apt_pkg*  
+    then run:-  
 	` (myvenv)~/library$ sudo apt-get update `  
 	` (myvenv)~/library$ sudo apt-get dist-upgrade `  
-this may take a while.  
-In the root directory run the following command:-  
+    this may take a while.  
+    In the root directory run the following command:-  
 	` ~$ sudo ln -s apt_pkg.cpython-{35m,36m}-x86_64-linux-gnu.so `  
-you can search this solution in the stackOverflow also,i found there.  
-2) if error comes like No module named *django*  
-then run:-  
+    you can search this solution in the stackOverflow also,i found there.  
+    2) if error comes like No module named *django*  
+    then run:-  
 	` (myvenv)~/library$ python -m pip install django `  
 		 or use python3 in place of python  
-now finally run migrate command:-  
+    now finally run migrate command:-  
 	` (myvenv) ~/library$ python manage.py migrate `
 
+Now, you can see a database file **db.sqlite3** in the library directory which is the default database provided by django  
+and here it will be used for creating dialogues
+ 
 9. now check whether the website is running  
 start the server:-  
 	` (myvenv)~/library$ python manage.py runserver `  
