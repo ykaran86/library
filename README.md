@@ -26,47 +26,47 @@ An Attempt to make a very simple, Library Asssistant that understands speech as 
 
 	Client: उसके लेखक कौन-कौन है  
 	Computer: 1) Tolkien, Jrr ;  
-   		      2) Tolkien, J. R. R. ;  
-   		      3) Tolkien, J. J. J. ;  
-   		      4) J.R.R. Tolkien ;  
-   		      5) Collins, Harper ;
+   		  2) Tolkien, J. R. R. ;  
+   		  3) Tolkien, J. J. J. ;  
+   		  4) J.R.R. Tolkien ;  
+   		  5) Collins, Harper ;
 
 	Client: Tolkien ने कौन-कौन सी किताबें लिखी हैं  
 	Computer: 1) The Lord of the Rings Part-3 = The Return of the    King ;  
-		      2) The Lord of the Rings Part-2 = The Two Towers ;  
-		      3) The lord of the rings ;  
-   	              4) The lord of the rings ;  
-		      5) The hobbit ;
+		  2) The Lord of the Rings Part-2 = The Two Towers ;  
+		  3) The lord of the rings ;  
+   	          4) The lord of the rings ;  
+		  5) The hobbit ;
 
 	Client: डिजिटल सेटेलाइट कम्युनिकेशंस की कितनी कॉपी अवेलेबल है  
 	Computer: 21
 
 	Client: उसके लेखक कौन हैं  
 	Computer:  1) Tri T. Ha ;  
-     		       2) edited by Giovanni E. Corazza ;
+     		   2) edited by Giovanni E. Corazza ;
 
 	Client: उसकी इशू डेट क्या है  
 	Computer: 1) 04/11/2011 12:00:00 AM ;  
-      		      2) 11/13/2013 12:00:00 AM ;
+      		  2) 11/13/2013 12:00:00 AM ;
 
 	Client: उसकी कितनी कॉपी रिजर्व नहीं है  
 	Computer: 20
 
 	Client: उसे लास्ट यीशु किसने की थी  
 	Computer: 1) IEC2006048 ;Prabhat Bharti ;  
-     		      2) IEC2010062 ;Harsh Bhardwaj ;
+     		  2) IEC2010062 ;Harsh Bhardwaj ;
 
 
 	Client: अलजेब्रा से रिलेटेड 5 किताबों के नाम बताइये  
 	Computer: 1) College Algebra = Enhanced with graphing Utilities ;  
-		      2) Schaum`s outline of theory and problems of linear algebra ;  
-		      3) Complex varibles and applications ;  
-		      4) Digital Computer Fundamentals ;  
-		      5) Digital Instumentation ;
+		  2) Schaum`s outline of theory and problems of linear algebra ;  
+		  3) Complex varibles and applications ;  
+		  4) Digital Computer Fundamentals ;  
+		  5) Digital Instumentation ;
 
 	Client: लाइब्रेरी में सबसे ज्यादा ड्यूस किस ग्रुप का है  
 	Computer: 1) Faculty ;  
-    		      2) Ph.D. ;
+    		  2) Ph.D. ;
 
 	CLient: लाइब्रेरी में मेरा कितना ड्यूस है  
 	Computer:  आपका नाम क्या है
@@ -76,17 +76,17 @@ An Attempt to make a very simple, Library Asssistant that understands speech as 
 
 	Client: मेरी कौन-कौन सी किताबें ड्यूस है  
 	Computer: 1) The Seven Habits of Highly Effective People ;  
-		      2) English-Hindi dictionary ;  
-		      3) Oxford advanced learner`s dictionary (Under Book Bank Scheme only for SC/ST Students) ;  
-		      4) Right to information guide : how to use the right to information   act effectively ;
+		  2) English-Hindi dictionary ;  
+		  3) Oxford advanced learner`s dictionary (Under Book Bank Scheme only for SC/ST Students) ;  
+		  4) Right to information guide : how to use the right to information   act effectively ;
 
 	Client: मेरी English-Hindi dictionary की ड्यू डेट क्या है   
 	Computer: 11/11/2013 12:00:00 AM ;
 
 	Client: लाइब्रेरी में सबसे ज्यादा ड्यूस किसका है  
 	Computer: 1) Mr. Shashi Kant Rai ;  
-     		      2) Dr. Nidhi Mishra ;  
-      		      3) Ranjeet Kumar ;
+     		  2) Dr. Nidhi Mishra ;  
+      		  3) Ranjeet Kumar ;
 
 	Client: Dr. Nidhi Mishra का कितना ड्यूस है  
 	Computer: 9
