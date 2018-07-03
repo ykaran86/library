@@ -43,7 +43,7 @@ An Attempt to make a very simple, Library Asssistant that understands speech as 
 
 	Client: उसके लेखक कौन हैं  
 	Computer:  1) Tri T. Ha ;  
-     		   2) edited by Giovanni E. Corazza ;
+     	2) edited by Giovanni E. Corazza ;
 
 	Client: उसकी इशू डेट क्या है  
 	Computer: 1) 04/11/2011 12:00:00 AM ;  
