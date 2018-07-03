@@ -47,14 +47,14 @@ An Attempt to make a very simple, Library Asssistant that understands speech as 
 
 	Client: उसकी इशू डेट क्या है  
 	Computer: 1) 04/11/2011 12:00:00 AM ;  
-      	   2) 11/13/2013 12:00:00 AM ;
+      	  2) 11/13/2013 12:00:00 AM ;
 
 	Client: उसकी कितनी कॉपी रिजर्व नहीं है  
 	Computer: 20
 
 	Client: उसे लास्ट यीशु किसने की थी  
 	Computer: 1) IEC2006048 ;Prabhat Bharti ;  
-     	   2) IEC2010062 ;Harsh Bhardwaj ;
+     	  2) IEC2010062 ;Harsh Bhardwaj ;
 
 
 	Client: अलजेब्रा से रिलेटेड 5 किताबों के नाम बताइये  
@@ -66,7 +66,7 @@ An Attempt to make a very simple, Library Asssistant that understands speech as 
 
 	Client: लाइब्रेरी में सबसे ज्यादा ड्यूस किस ग्रुप का है  
 	Computer: 1) Faculty ;  
-    	   2) Ph.D. ;
+    	  2) Ph.D. ;
 
 	CLient: लाइब्रेरी में मेरा कितना ड्यूस है  
 	Computer:  आपका नाम क्या है
@@ -85,8 +85,8 @@ An Attempt to make a very simple, Library Asssistant that understands speech as 
 
 	Client: लाइब्रेरी में सबसे ज्यादा ड्यूस किसका है  
 	Computer: 1) Mr. Shashi Kant Rai ;  
-     	   2) Dr. Nidhi Mishra ;  
-      	   3) Ranjeet Kumar ;
+     	  2) Dr. Nidhi Mishra ;  
+      	  3) Ranjeet Kumar ;
 
 	Client: Dr. Nidhi Mishra का कितना ड्यूस है  
 	Computer: 9
