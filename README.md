@@ -280,6 +280,7 @@ models.py is used to create the dialogue
 run the following commands:-  
 	` (myvenv)~/library$ python manage.py makemigrations index `  
 	` (myvenv)~/library$ python manage.py migrate index `  
+	` (myvenv)~/chat$ python manage.py migrate `  
 	` (myvenv)~/library$ python manage.py createsuperuser `  
 now provide username,email,password
 
