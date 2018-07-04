@@ -7,7 +7,8 @@ Project Source Code Can be Downloaded from the github repository ykaran86/librar
 Author
 ---
 
-Yogesh Karan
+Yogesh Karan  
+email:- ykaran86@gmail.com
 
 Supervisors:- Shrikant Malviya(Research Scholar, IIIT Allahabad) and Rohit Mishra(Research Scholar, IIIT Allahabad)
 
